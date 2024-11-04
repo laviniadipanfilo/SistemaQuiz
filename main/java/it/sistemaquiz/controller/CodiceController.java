@@ -34,11 +34,9 @@ public class CodiceController {
 
         String test = this.domandaRepository.findById(idDomanda).getClasseTest();
         
-        // Estrai i nomi delle classi principali e di test
         String nomeClassePrincipale = codiceService.estraiNomeClasse(codice);
         String nomeClasseTest = codiceService.estraiNomeClasse(this.domandaRepository.findById(idDomanda).getClasseTest());
 
-        // Sostituisci il riferimento alla classe principale nel codice di test
         String codiceTestAggiornato = test.replace("CodiceUtente", nomeClassePrincipale);
 
         Map<String, String> codiceClassi = new HashMap<>();
@@ -53,10 +51,10 @@ public class CodiceController {
             List<Map<String, String>> risultatiTest = codiceService.eseguiTestJUnit(classeUtente, classeTest);
 
             if (codiceService.getOutput()) {
-                // Se tutti i test sono passati
+//              Se tutti i test sono passati
                 codiceRepository.save(new Codice(codice, matricola, true));
             } else {
-                // Se ci sono errori
+//              Se ci sono errori
                 codiceRepository.save(new Codice(codice, matricola, false));
             }
 

@@ -137,15 +137,14 @@ public class CodiceService {
     }
 
     public List<Map<String, String>> eseguiTestJUnit(Class<?> classeUtente, Class<?> classeTest) throws Exception {
-        // Configura il launcher di JUnit per lanciare la classe di test
-        SummaryGeneratingListener listener = new SummaryGeneratingListener();
+
+    	SummaryGeneratingListener listener = new SummaryGeneratingListener();
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
             .selectors(DiscoverySelectors.selectClass(classeTest))
             .build();
         Launcher launcher = LauncherFactory.create();
         launcher.execute(request, listener);
 
-        // Ottieni il riepilogo dei test
         TestExecutionSummary summary = listener.getSummary();
         List<Map<String, String>> risultatiTest = new ArrayList<>();
 
