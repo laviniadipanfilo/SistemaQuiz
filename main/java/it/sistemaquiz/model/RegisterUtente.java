@@ -1,4 +1,4 @@
-package it.sistemaquiz.entity;
+package it.sistemaquiz.model;
 
 public class RegisterUtente {
 	

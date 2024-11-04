@@ -1,9 +1,13 @@
-package it.sistemaquiz.entity;
+package it.sistemaquiz.model;
 
 public class JSONResponse {
 
     private String status;
     private String messaggio;
+    
+    public JSONResponse() {
+    	
+    }
 
     public JSONResponse(String status, String messaggio) {
         this.status = status;

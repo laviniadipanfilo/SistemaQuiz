@@ -1,7 +1,5 @@
 package it.sistemaquiz.authentication;
 
-import it.sistemaquiz.repository.UtenteRepository;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,17 +10,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import it.sistemaquiz.repository.UtenteRepository;
+
 @Configuration
 public class ApplicationConfiguration {
-    private final UtenteRepository utenteRepository;
+    private final UtenteRepository userRepository;
 
     public ApplicationConfiguration(UtenteRepository userRepository) {
-        this.utenteRepository = userRepository;
+        this.userRepository = userRepository;
     }
 
     @Bean
     UserDetailsService userDetailsService() {
-        return username -> utenteRepository.findByMatricola(username)
+        return matricola -> userRepository.findByMatricola(matricola)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
