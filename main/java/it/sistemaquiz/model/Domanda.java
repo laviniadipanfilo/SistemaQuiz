@@ -14,8 +14,9 @@ public class Domanda {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 10000)
-    private String domanda;
+	@Column(length=1000)
+	private String domanda;
+	@Column(length=3000)
     private String classeTest;
     
 	public Long getId() {

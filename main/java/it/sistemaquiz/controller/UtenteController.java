@@ -10,7 +10,7 @@ import it.sistemaquiz.service.UtenteService;
 
 import java.util.List;
 
-@RequestMapping("/users")
+@RequestMapping("/utenti")
 @RestController
 public class UtenteController {
     private final UtenteService userService;

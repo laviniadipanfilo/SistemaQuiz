@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import it.sistemaquiz.model.Domanda;
 
 @Repository
-public interface DomandaRepository extends JpaRepository<Domanda, Integer> {
+public interface DomandaRepository extends JpaRepository<Domanda, Long> {
 
-	<Optional>Domanda findById(Long idDomanda);
 }

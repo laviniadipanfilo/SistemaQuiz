@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import it.sistemaquiz.model.Codice;
+import it.sistemaquiz.model.Domanda;
 import it.sistemaquiz.repository.CodiceRepository;
 import it.sistemaquiz.repository.DomandaRepository;
 import it.sistemaquiz.service.CodiceService;
@@ -27,15 +28,18 @@ public class CodiceController {
     }
     
     @PostMapping("/eseguiTest")
-    public ResponseEntity<?> eseguiTest(@RequestParam String codice, @RequestParam Long idDomanda) {
+    public ResponseEntity<?> eseguiTest(@RequestParam Long idDomanda, @RequestParam String codice) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String matricola = authentication.getName();
 
-        String test = this.domandaRepository.findById(idDomanda).getClasseTest();
+        Domanda domanda = this.domandaRepository.findById(idDomanda)
+                .orElseThrow(() -> new IllegalArgumentException("Domanda non trovata"));
+        
+        String test = domanda.getClasseTest();
         
         String nomeClassePrincipale = codiceService.estraiNomeClasse(codice);
-        String nomeClasseTest = codiceService.estraiNomeClasse(this.domandaRepository.findById(idDomanda).getClasseTest());
+        String nomeClasseTest = codiceService.estraiNomeClasse(test);
 
         String codiceTestAggiornato = test.replace("CodiceUtente", nomeClassePrincipale);
 
@@ -58,7 +62,10 @@ public class CodiceController {
                 codiceRepository.save(new Codice(codice, matricola, false));
             }
 
-            return ResponseEntity.ok(risultatiTest);
+            if(codiceService.getOutput())
+            	return ResponseEntity.ok("TEST ANDATI A BUON FINE");
+            else
+            	return ResponseEntity.ok(risultatiTest);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Errore: " + e.getMessage());
         }

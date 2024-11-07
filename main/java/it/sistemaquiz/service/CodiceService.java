@@ -137,6 +137,8 @@ public class CodiceService {
     }
 
     public List<Map<String, String>> eseguiTestJUnit(Class<?> classeUtente, Class<?> classeTest) throws Exception {
+    	
+    	this.output = false;
 
     	SummaryGeneratingListener listener = new SummaryGeneratingListener();
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
