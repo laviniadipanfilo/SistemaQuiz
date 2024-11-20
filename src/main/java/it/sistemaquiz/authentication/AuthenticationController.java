@@ -23,15 +23,15 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<Utente> register(@RequestBody RegisterUtente registerUserDto) {
-        Utente registeredUser = authenticationService.signup(registerUserDto);
+    public ResponseEntity<Utente> register(@RequestBody RegisterUtente registerUtente) {
+        Utente registeredUser = authenticationService.signup(registerUtente);
 
         return ResponseEntity.ok(registeredUser);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUtente loginUserDto) {
-    	Utente authenticatedUser = authenticationService.authenticate(loginUserDto);
+    public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUtente loginUtente) {
+    	Utente authenticatedUser = authenticationService.authenticate(loginUtente);
 
         String jwtToken = jwtService.generateToken(authenticatedUser);
 

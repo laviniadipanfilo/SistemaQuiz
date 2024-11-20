@@ -39,7 +39,7 @@ public class AuthenticationService {
     }
 
     public Utente authenticate(LoginUtente input) {
-        authenticationManager.authenticate(
+        this.authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         input.getMatricola(),
                         input.getPassword()
