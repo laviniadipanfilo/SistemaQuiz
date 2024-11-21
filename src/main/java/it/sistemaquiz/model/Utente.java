@@ -22,6 +22,8 @@ public class Utente implements UserDetails {
     private String matricola;
     @Column(nullable = false)
     private String password;
+    @OneToMany(mappedBy = "utente")
+    private List<Codice> codici;
 
     public Integer getId() {
 		return id;
@@ -62,6 +64,14 @@ public class Utente implements UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public List<Codice> getCodici() {
+		return codici;
+	}
+
+	public void setCodici(List<Codice> codici) {
+		this.codici = codici;
+	}
 
 	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -72,5 +82,5 @@ public class Utente implements UserDetails {
 	public String getUsername() {
 		return this.matricola;
 	}
-    
+
 }

@@ -32,6 +32,7 @@ public class AuthenticationService {
     public Utente signup(RegisterUtente input) {
     	Utente utente = new Utente();
     	utente.setNome(input.getNome());
+    	utente.setCognome(input.getCognome());
     	utente.setMatricola(input.getMatricola());
     	utente.setPassword(passwordEncoder.encode(input.getPassword()));
 

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Table(name = "codici")
@@ -16,12 +17,14 @@ public class Codice {
     private Long id;
     @Column(length = 10000)
     private String codice;
-    private String matricola;
+//    private String matricola;
     private boolean risultato; // true se risultato è giusto, false se sbagliato
+    @ManyToOne
+    private Utente utente;
 
-    public Codice(String codice, String matricola, boolean risultato) {
+    public Codice(String codice, Utente utente, boolean risultato) {
     	this.codice = codice;
-    	this.matricola = matricola;
+    	this.utente = utente;
     	this.risultato = risultato;
     }
 
@@ -41,13 +44,13 @@ public class Codice {
         this.codice = codice;
     }
 
-	public String getMatricola() {
-		return matricola;
-	}
-
-	public void setMatricola(String matricola) {
-		this.matricola = matricola;
-	}
+//	public String getMatricola() {
+//		return matricola;
+//	}
+//
+//	public void setMatricola(String matricola) {
+//		this.matricola = matricola;
+//	}
 
 	public boolean isRisultato() {
 		return risultato;
@@ -55,6 +58,14 @@ public class Codice {
 
 	public void setRisultato(boolean risultato) {
 		this.risultato = risultato;
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
 	}
 
 }

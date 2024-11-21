@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import it.sistemaquiz.model.Codice;
 import it.sistemaquiz.model.Domanda;
+import it.sistemaquiz.model.Utente;
 import it.sistemaquiz.repository.CodiceRepository;
 import it.sistemaquiz.repository.DomandaRepository;
+import it.sistemaquiz.repository.UtenteRepository;
 import it.sistemaquiz.service.CodiceService;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +24,7 @@ public class CodiceController {
 	@Autowired CodiceService codiceService;
 	@Autowired CodiceRepository codiceRepository;
 	@Autowired DomandaRepository domandaRepository;
+	@Autowired UtenteRepository utenteRepository;
 	
     public CodiceController(CodiceService codiceService) {
         this.codiceService = codiceService;
@@ -32,6 +35,9 @@ public class CodiceController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String matricola = authentication.getName();
+        
+        Utente utente = utenteRepository.findByMatricola(matricola)
+                .orElseThrow(() -> new RuntimeException("Utente non trovato"));
 
         Domanda domanda = this.domandaRepository.findById(idDomanda)
                 .orElseThrow(() -> new IllegalArgumentException("Domanda non trovata"));
@@ -56,10 +62,10 @@ public class CodiceController {
 
             if (codiceService.getOutput()) {
 //              Se tutti i test sono passati
-                codiceRepository.save(new Codice(codice, matricola, true));
+                codiceRepository.save(new Codice(codice, utente, true));
             } else {
 //              Se ci sono errori
-                codiceRepository.save(new Codice(codice, matricola, false));
+                codiceRepository.save(new Codice(codice, utente, false));
             }
 
             if(codiceService.getOutput())
