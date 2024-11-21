@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Table(name = "utenti")
@@ -23,6 +25,7 @@ public class Utente implements UserDetails {
     @Column(nullable = false)
     private String password;
     @OneToMany(mappedBy = "utente")
+    @JsonManagedReference
     private List<Codice> codici;
 
     public Integer getId() {

@@ -1,5 +1,7 @@
 package it.sistemaquiz.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,12 +21,17 @@ public class Codice {
     private String codice;
     private boolean risultato; // true se risultato è giusto, false se sbagliato
     @ManyToOne
+    @JsonIgnore
     private Utente utente;
 
     public Codice(String codice, Utente utente, boolean risultato) {
     	this.codice = codice;
     	this.utente = utente;
     	this.risultato = risultato;
+    }
+    
+    public Codice() {
+    
     }
 
     public Long getId() {
