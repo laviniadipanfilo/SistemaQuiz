@@ -5,9 +5,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import it.sistemaquiz.entity.Utente;
 import it.sistemaquiz.model.LoginUtente;
 import it.sistemaquiz.model.RegisterUtente;
-import it.sistemaquiz.model.Utente;
 import it.sistemaquiz.repository.UtenteRepository;
 
 @Service

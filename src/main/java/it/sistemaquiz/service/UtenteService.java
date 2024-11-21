@@ -3,7 +3,8 @@ package it.sistemaquiz.service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
-import it.sistemaquiz.model.Utente;
+
+import it.sistemaquiz.entity.Utente;
 import it.sistemaquiz.repository.UtenteRepository;
 
 @Service

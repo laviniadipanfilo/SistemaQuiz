@@ -2,7 +2,7 @@ package it.sistemaquiz.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import it.sistemaquiz.model.Utente;
+import it.sistemaquiz.entity.Utente;
 
 import java.util.Optional;
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.sistemaquiz.model.Domanda;
+import it.sistemaquiz.entity.Domanda;
 import it.sistemaquiz.repository.DomandaRepository;
 
 @RequestMapping("/domande")

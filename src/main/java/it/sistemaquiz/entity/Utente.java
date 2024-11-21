@@ -1,4 +1,4 @@
-package it.sistemaquiz.model;
+package it.sistemaquiz.entity;
 
 import java.util.Collection;
 import java.util.List;

@@ -1,4 +1,4 @@
-package it.sistemaquiz.model;
+package it.sistemaquiz.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,7 +17,6 @@ public class Codice {
     private Long id;
     @Column(length = 10000)
     private String codice;
-//    private String matricola;
     private boolean risultato; // true se risultato è giusto, false se sbagliato
     @ManyToOne
     private Utente utente;
@@ -43,14 +42,6 @@ public class Codice {
     public void setCodice(String codice) {
         this.codice = codice;
     }
-
-//	public String getMatricola() {
-//		return matricola;
-//	}
-//
-//	public void setMatricola(String matricola) {
-//		this.matricola = matricola;
-//	}
 
 	public boolean isRisultato() {
 		return risultato;

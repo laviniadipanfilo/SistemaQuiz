@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import it.sistemaquiz.model.Codice;
-import it.sistemaquiz.model.Domanda;
-import it.sistemaquiz.model.Utente;
+
+import it.sistemaquiz.entity.Codice;
+import it.sistemaquiz.entity.Domanda;
+import it.sistemaquiz.entity.Utente;
 import it.sistemaquiz.repository.CodiceRepository;
 import it.sistemaquiz.repository.DomandaRepository;
 import it.sistemaquiz.repository.UtenteRepository;

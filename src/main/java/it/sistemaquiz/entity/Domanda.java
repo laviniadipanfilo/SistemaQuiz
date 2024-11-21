@@ -1,4 +1,4 @@
-package it.sistemaquiz.model;
+package it.sistemaquiz.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

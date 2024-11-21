@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.sistemaquiz.model.Utente;
+import it.sistemaquiz.entity.Utente;
 import it.sistemaquiz.service.UtenteService;
 
 import java.util.List;

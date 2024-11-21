@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.sistemaquiz.entity.Utente;
 import it.sistemaquiz.model.LoginUtente;
 import it.sistemaquiz.model.RegisterUtente;
-import it.sistemaquiz.model.Utente;
 
 @RequestMapping("/auth")
 @RestController
