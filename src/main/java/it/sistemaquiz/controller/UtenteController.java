@@ -32,12 +32,12 @@ public class UtenteController {
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getDettagliUtenti(@PathVariable Long id) {
 	    Utente utente = utenteRepository.findById(id)
-	            .orElseThrow(() -> new IllegalArgumentException("Utente non trovata"));
+	            .orElseThrow(() -> new IllegalArgumentException("Utente non trovato"));
 
-	    Map<String, String> dettagliUtente = new HashMap<>();
-	    dettagliUtente.put("nome", utente.getNome());
-	    dettagliUtente.put("cogome", utente.getCognome());
-	    dettagliUtente.put("matricola", utente.getMatricola());
+	    Map<String, String> datiUtente = new HashMap<>();
+	    datiUtente.put("nome", utente.getNome());
+	    datiUtente.put("cogome", utente.getCognome());
+	    datiUtente.put("matricola", utente.getMatricola());
 
 	    return ResponseEntity.ok(utente);
 	}
