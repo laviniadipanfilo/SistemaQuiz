@@ -33,7 +33,7 @@ public class DomandaController {
 
 	    Map<String, String> dettagliDomanda = new HashMap<>();
 	    dettagliDomanda.put("domanda", domanda.getDomanda());
-	    dettagliDomanda.put("classeTest", domanda.getClasseTest());
+	    dettagliDomanda.put("test", domanda.getTest());
 
 	    return ResponseEntity.ok(dettagliDomanda);
 	}

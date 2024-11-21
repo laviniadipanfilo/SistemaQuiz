@@ -43,7 +43,7 @@ public class CodiceController {
         Domanda domanda = this.domandaRepository.findById(idDomanda)
                 .orElseThrow(() -> new IllegalArgumentException("Domanda non trovata"));
         
-        String test = domanda.getClasseTest();
+        String test = domanda.getTest();
         
         String nomeClassePrincipale = codiceService.estraiNomeClasse(codice);
         String nomeClasseTest = codiceService.estraiNomeClasse(test);

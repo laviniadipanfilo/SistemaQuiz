@@ -22,7 +22,7 @@ public class Domanda {
 	@Column(length=1000)
 	private String domanda;
 	@Column(length=3000)
-    private String classeTest;
+    private String test; // classe di test
 	@OneToMany(mappedBy = "domanda")
     @JsonManagedReference
     private List<Codice> codici;
@@ -43,12 +43,12 @@ public class Domanda {
 		this.domanda = domanda;
 	}
 	
-	public String getClasseTest() {
-		return classeTest;
+	public String getTest() {
+		return test;
 	}
 	
-	public void setClasseTest(String classeTest) {
-		this.classeTest = classeTest;
+	public void setTest(String test) {
+		this.test = test;
 	}
 
 	public List<Codice> getCodici() {
