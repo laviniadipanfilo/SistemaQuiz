@@ -63,10 +63,10 @@ public class CodiceController {
 
             if (codiceService.getOutput()) {
 //              Se tutti i test sono passati
-                codiceRepository.save(new Codice(codice, utente, true));
+                codiceRepository.save(new Codice(codice, utente, domanda, true));
             } else {
 //              Se ci sono errori
-                codiceRepository.save(new Codice(codice, utente, false));
+                codiceRepository.save(new Codice(codice, utente, domanda, false));
             }
 
             if(codiceService.getOutput())

@@ -1,10 +1,15 @@
 package it.sistemaquiz.entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Table(name = "domande")
@@ -18,6 +23,9 @@ public class Domanda {
 	private String domanda;
 	@Column(length=3000)
     private String classeTest;
+	@OneToMany(mappedBy = "domanda")
+    @JsonManagedReference
+    private List<Codice> codici;
     
 	public Long getId() {
 		return id;
@@ -41,6 +49,14 @@ public class Domanda {
 	
 	public void setClasseTest(String classeTest) {
 		this.classeTest = classeTest;
+	}
+
+	public List<Codice> getCodici() {
+		return codici;
+	}
+
+	public void setCodici(List<Codice> codici) {
+		this.codici = codici;
 	}
     
 }

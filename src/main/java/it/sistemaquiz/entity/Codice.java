@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -23,10 +24,14 @@ public class Codice {
     @ManyToOne
     @JsonIgnore
     private Utente utente;
+    @ManyToOne
+    @JsonIgnore
+    private Domanda domanda;
 
-    public Codice(String codice, Utente utente, boolean risultato) {
+    public Codice(String codice, Utente utente, Domanda domanda, boolean risultato) {
     	this.codice = codice;
     	this.utente = utente;
+    	this.domanda = domanda;
     	this.risultato = risultato;
     }
     
@@ -64,6 +69,14 @@ public class Codice {
 
 	public void setUtente(Utente utente) {
 		this.utente = utente;
+	}
+
+	public Domanda getDomanda() {
+		return domanda;
+	}
+
+	public void setDomanda(Domanda domanda) {
+		this.domanda = domanda;
 	}
 
 }
